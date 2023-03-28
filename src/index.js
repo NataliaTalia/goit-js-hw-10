@@ -52,7 +52,7 @@ function renderMarkup(countries) {
     //i have to write function here for addilg lists
     
     addingListOfCountries(countries);
-
+    countryInfoRef.innerHTML = '';
     
     
 
