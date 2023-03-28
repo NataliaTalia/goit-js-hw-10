@@ -25,6 +25,7 @@ function onInput (e) {
     const searchQuery = e.target.value.trim();
 
     if(searchQuery.length === 0) {
+      listRef.innerHTML = '';
         return;
     }
 
