@@ -36,6 +36,7 @@ function onInput (e) {
 
 }
 
+let countryAdded = false;
 
 function renderMarkup(countries) {
   console.log(countries)
@@ -44,7 +45,7 @@ function renderMarkup(countries) {
     Notiflix.Notify.failure('Oops, there is no country with that name');
     listRef.innerHTML = '';
     countryInfoRef.innerHTML = '';
-    
+    countryAdded = false;
 
 
   } else if (countries.length > 2 && countries.length < 10) {
@@ -53,7 +54,7 @@ function renderMarkup(countries) {
     
     addingListOfCountries(countries);
     countryInfoRef.innerHTML = '';
-    
+    countryAdded = false;
     
 
   } else if (countries.length > 10) {
@@ -61,10 +62,11 @@ function renderMarkup(countries) {
     Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
     listRef.innerHTML = '';
     countryInfoRef.innerHTML = '';
-
-  } else {
+    countryAdded = false;
+  } else if (!countryAdded) {
     listRef.innerHTML = '';
     addingMatchingCountry (countries);
+    countryAdded = true;
     console.log(listRef)
     
     
