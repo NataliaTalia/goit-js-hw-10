@@ -32,7 +32,7 @@ function onInput (e) {
     .then (countries => {
         renderMarkup(countries)
     })
-    .catch(error => console.error('Error onInput'));
+    .catch(error => console.error(error));
 
 }
 
@@ -61,6 +61,7 @@ function renderMarkup(countries) {
     Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
     listRef.innerHTML = '';
     countryInfoRef.innerHTML = '';
+
   } else {
     listRef.innerHTML = '';
     addingMatchingCountry (countries);
@@ -81,14 +82,10 @@ function renderMarkup(countries) {
         <span class="country-name">${official}</span></li>
         `
     }).join('');
-    // listRef.insertAdjacentHTML('beforeend', markup)
-
-    for (country of countries) {
-        listRef.innerHTML = markup;
-    }
-
+    listRef.insertAdjacentHTML('beforeend', markup)
     countryInfoRef.innerHTML = '';
   }
+
 
   function addingMatchingCountry (countries) {
     const markup = countries.map(({name: {official}, flags: {svg}, capital, population, languages}) => {
@@ -103,10 +100,8 @@ function renderMarkup(countries) {
         <p class="country-item">Languages:${lang}</p>
         `
     }).join('')
-    // countryInfoRef.insertAdjacentHTML('afterbegin', markup)
+    countryInfoRef.insertAdjacentHTML('afterbegin', markup)
 
-    for (country of countries) {
-        listRef.innerHTML = markup;
-    }
-    console.log(lang)
+   
+    
   }
