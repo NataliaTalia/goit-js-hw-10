@@ -24,8 +24,9 @@ searchRef.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY))
 function onInput (e) {
     const searchQuery = e.target.value.trim();
 
-    if(searchQuery.length === 0) {
-      listRef.innerHTML = '';
+    if(!searchQuery) {
+      listRef.innercvHTML = '';
+      countryInfoRef.innerHTML = '';
         return;
     }
 
